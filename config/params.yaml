@@ -1,0 +1,17 @@
+# Parameters for both nodes, loaded by launch/motor_sim.launch.py
+#
+# NOTE: all of these are declared as floats in the nodes. Keep the decimal
+# point (3000.0 not 3000) or the node fails at startup with a type error.
+
+bridge_node:
+  ros__parameters:
+    rpm_gain: 3000.0            # RPM per (m/s), so 1 m/s = full speed
+    max_rpm: 3000.0             # clamp, both directions
+    thruster_separation: 0.3    # m, between left and right thrusters
+
+motor_sim_node:
+  ros__parameters:
+    tau: 0.2                    # s, motor time constant (~63 % of a step in one tau)
+    max_accel_rpm_per_s: 0.0    # slew limit, 0.0 = off
+    sim_rate_hz: 50.0
+    cmd_timeout: 0.5            # s without a command before targets go to zero
